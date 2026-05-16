@@ -1,0 +1,4 @@
+interface:
+  display_name: "Implementation Review"
+  short_description: "Review changes with Must and Should findings"
+  default_prompt: "Use $implementation-review to review the current implementation changes and report Must and Should findings."
