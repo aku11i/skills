@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ready for Review PR"
+  short_description: "Mark a draft GitHub PR ready for review"
+  default_prompt: "Use $gh-ready-for-review-pr to mark the current draft pull request as ready for review."
