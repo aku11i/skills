@@ -44,6 +44,21 @@ Use this skill to review implementation changes and report only issues that are 
    - Explain the scenario, impact, and expected correction.
    - Avoid nitpicks, personal preference, broad rewrites, and speculative concerns without a plausible failure mode.
 
+## Review Areas
+
+Use these areas to decide what to inspect. Do not report every checklist item; report only concrete Must or Should findings.
+
+- Requirements fit: the implementation matches the stated goal, issue, product behavior, CLI contract, mobile behavior, API contract, or infrastructure intent without missing required cases or adding unintended behavior.
+- Correctness: normal paths, boundary values, empty and null inputs, invalid input, retries, timeouts, concurrency, ordering, state transitions, idempotency, and error handling behave as expected.
+- Impact and compatibility: existing features, public APIs, schemas, migrations, configuration, saved data, integrations, generated files, and deployment behavior remain compatible or have a safe migration path.
+- Security and privacy: authentication, authorization, tenant isolation, input validation, output escaping, dependency risk, secret handling, logging of sensitive data, and permission scope are appropriate for the change.
+- Data integrity: writes are atomic enough for the domain, transactions and rollbacks are used where needed, partial failures are handled, and migrations avoid data loss or inconsistent state.
+- Design and maintainability: responsibilities are clear, abstractions match existing project patterns, coupling is reasonable, names are accurate, and future changes will not require touching many unrelated places.
+- Tests and validation: high-risk behavior has focused tests or equivalent validation, regression risk is covered, fixtures are realistic, and test changes actually assert the behavior being introduced.
+- Performance and resource use: queries, loops, network calls, memory use, mobile responsiveness, startup cost, caching, and infrastructure scale are acceptable for realistic data volume and traffic.
+- Operations and observability: failures produce actionable errors, logs, metrics, traces, alerts, runbooks, rollback behavior, and feature flags are sufficient for production diagnosis and recovery.
+- Documentation and rollout: maintainers, users, operators, and downstream callers have the needed migration notes, configuration examples, changelog entries, or usage docs.
+
 ## Severity Rules
 
 ### Must
