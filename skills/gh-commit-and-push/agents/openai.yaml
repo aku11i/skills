@@ -1,0 +1,4 @@
+interface:
+  display_name: "Commit and Push"
+  short_description: "Commit local changes and push the branch"
+  default_prompt: "Use $gh-commit-and-push to commit the current changes and push them to the remote branch."
