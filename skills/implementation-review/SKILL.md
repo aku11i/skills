@@ -29,16 +29,23 @@ Use this skill to review implementation changes and report only issues that are 
    - Read the PR description, issue references, commit messages, changed files, and nearby code.
    - Identify the product behavior, data model, API contract, CLI behavior, mobile behavior, or infrastructure behavior the change is meant to affect.
 
-2. Inspect the diff and the surrounding implementation.
+2. Use subagents when the environment supports them.
+   - Ask one or more subagents to review the implementation before producing the final findings.
+   - Split subagents by broad review areas when that is useful, such as correctness and compatibility, security and data integrity, tests and validation, or operations and rollout.
+   - Give each subagent the review target, intent, relevant diff context, and the same Must/Should severity rules. Ask them to report only concrete findings with file and line references.
+   - Do not let subagent output bypass judgment. Reconcile duplicates, verify claims against the code when practical, discard unsupported or nit-level comments, and synthesize the final review yourself.
+   - If subagents are unavailable, continue with a direct review and state no special note unless it affects confidence or validation.
+
+3. Inspect the diff and the surrounding implementation.
    - Use `git diff --stat`, `git diff`, and focused file reads.
    - Trace call sites, configuration, data flow, permissions, migrations, feature flags, and error paths as needed.
    - For infrastructure, inspect plan-like changes, dependencies, permissions, rollout behavior, and rollback implications.
 
-3. Validate where practical.
+4. Validate where practical.
    - Run focused tests, type checks, linters, or dry-run commands when they are cheap and relevant.
    - If validation is risky, slow, unavailable, or requires missing credentials, state the gap.
 
-4. Report findings first.
+5. Report findings first.
    - Prioritize concrete risks over style preferences.
    - Include file and line references whenever possible.
    - Explain the scenario, impact, and expected correction.
