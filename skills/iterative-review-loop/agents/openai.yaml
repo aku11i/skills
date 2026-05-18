@@ -1,0 +1,4 @@
+interface:
+  display_name: "Iterative Review Loop"
+  short_description: "Review, fix, and repeat until actionable findings are gone"
+  default_prompt: "Use $iterative-review-loop to review the current implementation with $implementation-review, fix accepted Must and Should findings, and repeat until no actionable findings remain."
