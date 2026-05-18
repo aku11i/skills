@@ -37,8 +37,9 @@ Use this skill to turn local repository changes into a GitHub draft pull request
 
 6. Learn repository PR conventions before writing title or body.
    - Inspect about five recently created PRs with `gh pr list --state all --limit 5 --json number,title,body,createdAt,url`.
-   - Use their title style as the model for the new PR title.
-   - Do not add prefixes that advertise a tool or agent, such as `Codex:`, `AI:`, or similar.
+   - Use their title style as the model for the new PR title, including whether titles use prefixes.
+   - Do not add prefixes that advertise a tool or agent, such as `Codex:`, `[codex]`, `AI:`, or similar.
+   - Conventional commit style prefixes such as `feat:` or `fix:` are allowed when recent PR titles use them.
    - Check for PR templates in `.github/pull_request_template.md`, `.github/PULL_REQUEST_TEMPLATE.md`, `.github/PULL_REQUEST_TEMPLATE/`, `docs/`, or repository-specific template locations.
 
 7. Draft the PR body.
@@ -61,6 +62,7 @@ Use this skill to turn local repository changes into a GitHub draft pull request
 - Do not create a PR from the default branch; branch first.
 - Do not downgrade a ready-for-review PR to draft.
 - Do not use tool names, agent names, or automation prefixes in branch names, commit messages, PR titles, or PR body unless the repository already requires that exact convention.
+- For PR title prefixes, follow recent project PRs. Only tool- or automation-identifying prefixes are forbidden by default; project conventions such as conventional commit prefixes are acceptable when they match recent PRs.
 - Do not fabricate issue links, test results, or external references. Include only sources actually inspected.
 
 ## Useful Commands
