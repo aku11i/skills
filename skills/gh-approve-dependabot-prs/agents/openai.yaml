@@ -1,0 +1,4 @@
+interface:
+  display_name: "Approve Dependabot PRs"
+  short_description: "Review and approve safe Dependabot PRs"
+  default_prompt: "Use $gh-approve-dependabot-prs to review open Dependabot pull requests one by one, comment on CI failures or impact risks, and approve only safe updates."
