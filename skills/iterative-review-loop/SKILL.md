@@ -17,10 +17,12 @@ Use this skill when the user wants review and fixes repeated until the implement
 1. Inspect the repository state.
    - Run `git status --short --branch`.
    - Determine whether the target is local uncommitted work or an already committed branch/PR.
+   - Gather the implementation purpose and background from the PR description, issue references, user request, branch name, commits, and diff. Keep this as the review brief for the full loop.
    - Preserve unrelated user changes. Stage or edit only files that belong to accepted fixes.
 
 2. Run a review pass with `$implementation-review`.
    - Review the same target the implementation-review skill selects: uncommitted changes first, otherwise the current branch PR or branch diff.
+   - Pass the review brief into each review pass so `$implementation-review` and any review subagents receive PR-overview-equivalent purpose, background, constraints, and non-goals.
    - Keep the findings in `Must` and `Should` terms. Ignore nit-level comments.
 
 3. Decide what to do with each finding.
@@ -46,6 +48,7 @@ Use this skill when the user wants review and fixes repeated until the implement
 
 7. Repeat.
    - Run `$implementation-review` again after every accepted fix batch.
+   - Reuse the same review brief, updating it only when the accepted fixes materially change the scope, constraints, or risk profile.
    - Continue until the latest review pass has no findings that require action.
    - Stop early only if the remaining findings are intentionally skipped, require user input, or cannot be fixed in the current environment.
 

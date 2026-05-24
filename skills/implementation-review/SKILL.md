@@ -28,11 +28,13 @@ Use this skill to review implementation changes and report only issues that are 
 1. Understand intent and scope.
    - Read the PR description, issue references, commit messages, changed files, and nearby code.
    - Identify the product behavior, data model, API contract, CLI behavior, mobile behavior, or infrastructure behavior the change is meant to affect.
+   - Build a short review brief equivalent to a PR overview. Include the implementation purpose, background, user-visible or operational intent, important constraints, and any explicit non-goals or risks. If reviewing uncommitted local work without a PR description, infer this from the user's request, branch name, commits, issue references, and diff; clearly mark missing or inferred context.
 
 2. Use subagents when the environment supports them.
    - Ask one or more subagents to review the implementation before producing the final findings.
    - Split subagents by broad review areas when that is useful, such as correctness and compatibility, security and data integrity, tests and validation, or operations and rollout.
-   - Give each subagent the review target, intent, relevant diff context, and the same Must/Should severity rules. Ask them to report only concrete findings with file and line references.
+   - Give each subagent the review target, the review brief, relevant diff context, and the same Must/Should severity rules. The review brief must carry the same purpose and background information a reviewer would normally get from the PR overview.
+   - Ask each subagent to judge findings against that purpose and background, then report only concrete findings with file and line references.
    - Do not let subagent output bypass judgment. Reconcile duplicates, verify claims against the code when practical, discard unsupported or nit-level comments, and synthesize the final review yourself.
    - If subagents are unavailable, continue with a direct review and state no special note unless it affects confidence or validation.
 
